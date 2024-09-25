@@ -1,0 +1,23 @@
+{
+    "agents": [
+        {
+            "id": 1,
+            "name": "test",
+            "description": "This is a test agent",
+            "toolchain": [
+                "QnA",
+                "Schedule",
+                "Splitwise"
+            ]
+        },
+        {
+            "name": "test2",
+            "description": "This agent created for testing the application.",
+            "toolchain": [
+                "QnA",
+                "Schedule",
+                "Splitwise"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppNix</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">AppNix</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/repository">Repository <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/toolchain">Toolchain</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+    <div class="container">
+        <h2 class="mt-5">Creating a agent</h2>
+        <form action="/submit" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Agent Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" name="description" required>
+            </div>
+            <div id="toolContainer"></div>
+            <!-- <div id="toolContainer" >
+                <select name="toolType[]" class="form-group toolType">
+                    <option value="" disabled selected>Select Tool Type</option>
+                    <option value="QnA">QnA</option>
+                    <option value="Schedule">Schedule</option>
+                    <option value="Splitwise">Splitwise</option>
+                </select>
+              </div>
+
+            <div class="form-group" id="fileInput" style="display: none;">
+                <label for="file">Upload File:</label>"
+                <input type="file" class="form-control-file" id="files" name="files" accept=".txt, .pdf, .rtf"  multiple>
+            </div> -->
+
+            <button type="button" id="addTool" class="btn btn-success">Add Tool</button>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class=flashes>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <script>
+      window.onload = function() {
+          document.getElementById('addTool').addEventListener('click', function() {
+              var toolContainer = document.getElementById('toolContainer');
+              var newTool = document.createElement('div');
+              newTool.innerHTML = `
+                  <select name="toolType[]" class="form-group toolType">
+                      <option value="" disabled selected>Select Tool Type</option>
+                      <option value="QnA">QnA</option>
+                      <option value="Schedule">Schedule</option>
+                      <option value="Splitwise">Splitwise</option>
+                      <!-- Add more options as needed -->
+                  </select>
+                  <div class="form-group qnafileInput" style="display: none;">
+                      <label for="file">Upload text files (pdf, txt, rtf)</label>
+                      <input type="file" class="form-control-file" id="files" name="qnaFiles" accept=".txt, .pdf, .rtf" multiple>
+                  </div>
+                  <div class="form-group scheduleFileInput" style="display: none;">
+                      <label for="file">Upload json file containing schedule</label>
+                      <input type="file" class="form-control-file" id="files" name="scheduleFiles" accept=".json">
+                  </div>
+                  <!-- Add more fields as needed -->
+              `;
+              toolContainer.appendChild(newTool);
+  
+              // Add change event listener to the new select element
+              newTool.querySelector('.toolType').addEventListener('change', function() {
+                  var fileInput = newTool.querySelector('.qnafileInput');
+                  if (this.value == 'QnA') {
+                      fileInput.style.display = 'block';
+                  } else {
+                      fileInput.style.display = 'none';
+                  }
+              });
+              newTool.querySelector('.toolType').addEventListener('change', function() {
+                  var fileInput = newTool.querySelector('.scheduleFileInput');
+                  if (this.value == 'Schedule') {
+                      fileInput.style.display = 'block';
+                  } else {
+                      fileInput.style.display = 'none';
+                  }
+              });
+          });
+      };
+  </script>
+  
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

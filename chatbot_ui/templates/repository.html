@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AppNix</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Add custom CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .search-bar {
+      margin-bottom: 20px;
+    }
+    .product-list {
+      padding: 0;
+    }
+    .product-item {
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+    .navbar {
+        margin-bottom: 20px;  /* Add space below the navbar */
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">AppNix</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/repository">Repository <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/toolchain">Toolchain</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+<div class="container">
+  <div class="search-bar">
+    <div class="input-group">
+      <input type="text" class="form-control" id="searchInput" placeholder="Search agents...">
+      <div class="input-group-append">
+        <button class="btn btn-primary" type="button" onclick="searchProducts()">Search</button>
+      </div>
+    </div>
+  </div>
+
+  <ul class="list-group product-list" id="productList">
+    {% for agent in agents %}
+    <li class="list-group-item product-item">
+      <a href="/agent/{{ agent.name }}">
+        <h2 class="agent-name">{{ agent.name }}</h2>
+      </a>
+      <p class="agent-description">{{ agent.description }}</p>
+      {% for tool in agent.toolchain %}
+      <span class="badge badge-secondary">{{ tool }}</span>
+      {% endfor %}
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<!-- Bootstrap JS (optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  // Function to search products
+  function searchProducts() {
+    var input = document.getElementById('searchInput').value.toUpperCase();
+    var items = document.getElementsByClassName('product-item');
+    for (var i = 0; i < items.length; i++) {
+      var name = items[i].getElementsByClassName('product-name')[0].textContent.toUpperCase();
+      if (name.indexOf(input) > -1) {
+        items[i].style.display = '';
+      } else {
+        items[i].style.display = 'none';
+      }
+    }
+  };
+</script>
+
+</body>
+</html>

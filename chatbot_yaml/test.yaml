@@ -1,0 +1,19 @@
+Agent:
+  name: test
+  creation_date: 11/04/2024
+  tools:
+    QnA:
+      data_path: /home/spanwar/Documents/collage/projects/chatbot_v2/data/leanStartupData
+      description: Files contains information about the lean startup.
+    Schedule:
+      data: 
+        monday: "12:00 - 14:00",
+        tuesday: "14:00 - 16:00",
+        wednesday: "16:00 - 18:00",
+        thursday: "18:00 - 20:00",
+        friday: "20:00 - 22:00",
+        saturday: "10:00 - 12:00",
+        sunday: "10:00 - 12:00"
+      description: Files contains information about the schedule.
+    spiltwise:
+      description: Manage the expenses of the group.
