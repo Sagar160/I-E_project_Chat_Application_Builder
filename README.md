@@ -1,6 +1,7 @@
-# Project
-This repository contains the project's code base.
+# Chat Application Builder: A No-Code Solution
 
-# Demo
+This project is a demo application showcasing how to create various types of chat-based applications effortlessly using a no-code platform. This solution empowers users to design, customize, and deploy chat applications without writing a single line of code.
 
-https://github.com/Sagar160/I-E_project_turku/blob/6c2c6cdca797e655f858878de338b8cb73d6c05e/vedio/AppNix.mp4
+# How to build create a Chat Application
+
+# Simple Implementation
