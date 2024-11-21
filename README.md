@@ -5,5 +5,6 @@ This project is a demo application showcasing how to create various types of cha
 # How to build create a Chat Application
 https://github.com/user-attachments/assets/75a53c81-b966-4240-8e3b-6184fcf786c7
 
-# Simple Implementation
+# Example (CLothing Store)
+Showcase a example of a user intraction with this chat application on the platform. 
 https://github.com/user-attachments/assets/44904eb4-8225-4ca1-b99c-0616bb1f2e8b
