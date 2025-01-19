@@ -9,3 +9,14 @@ https://github.com/user-attachments/assets/75a53c81-b966-4240-8e3b-6184fcf786c7
 Showcase a example of a user intraction with this chat application on the platform. 
 
 https://github.com/user-attachments/assets/44904eb4-8225-4ca1-b99c-0616bb1f2e8b
+
+## Technologies and Tools
+- Python
+- Pandas, NumPy
+- SQL
+- Retrieval-augmented generation (RAG)
+- Google Gemini
+- Vertex AI
+- Flask
+- HTML
+- CSS
